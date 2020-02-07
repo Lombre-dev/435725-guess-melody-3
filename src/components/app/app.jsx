@@ -1,13 +1,17 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/react-in-jsx-scope */
+import PropTypes from 'prop-types';
 import React from 'react';
-import WelcomeScreen from '../screens/welcome-screen.jsx';
+import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 
 
 const App = (props) => {
   return (
-    <WelcomeScreen errorsCount={props.errors.length} />
+    <WelcomeScreen errorsCount={props.errorsCount} />
   );
+};
+
+App.propTypes = {
+  // число, количество ошибок для WelcomeScreen
+  errorsCount: PropTypes.number.isRequired,
 };
 
 export default App;
