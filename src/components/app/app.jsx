@@ -5,13 +5,13 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 
 const App = (props) => {
   return (
-    <WelcomeScreen errorsCount={props.errorsCount} />
+    <WelcomeScreen errorsLimit={props.errorsLimit} />
   );
 };
 
 App.propTypes = {
-  // число, количество ошибок для WelcomeScreen
-  errorsCount: PropTypes.number.isRequired,
+  // максимально допустимое число ошибок -> WelcomeScreen
+  errorsLimit: PropTypes.number.isRequired,
 };
 
 export default App;
