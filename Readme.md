@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгений Кривицкий](https://up.htmlacademy.ru/react/3/user/435725).
-* Наставник: [Евгений Щеколдин](https://htmlacademy.ru/profile/id861059).
+* Наставник: [Егор Брагин](https://htmlacademy.ru/profile/id1349603).
 
 ---
 
