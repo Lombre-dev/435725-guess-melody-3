@@ -1,17 +1,12 @@
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
 import React from 'react';
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 
 
-const App = (props) => {
+const App = ({errorsLimit}) => {
   return (
-    <WelcomeScreen errorsLimit={props.errorsLimit} />
+    <WelcomeScreen errorsLimit={errorsLimit} />
   );
-};
-
-App.propTypes = {
-  // максимально допустимое число ошибок -> WelcomeScreen
-  errorsLimit: PropTypes.number.isRequired,
 };
 
 export default App;
