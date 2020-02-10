@@ -20,9 +20,10 @@ const WelcomeScreen = ({errorsLimit}) => {
   );
 };
 
-WelcomeScreen.propTypes = {
+const PROP_TYPES = WelcomeScreen.propTypes = {
   // максимально допустимое число ошибок
   errorsLimit: PropTypes.number.isRequired,
 };
 
+export {PROP_TYPES as WelcomeScreenPropTypes};
 export default WelcomeScreen;
