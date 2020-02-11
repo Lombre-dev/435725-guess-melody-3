@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import React from "react";
-import WelcomeScreen, {WelcomeScreenPropTypes} from "../welcome-screen/welcome-screen.jsx";
+import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 
 
 const App = ({errorsLimit}) => {
@@ -8,7 +9,8 @@ const App = ({errorsLimit}) => {
   );
 };
 
-// решение без вынесения типов в отдельный файл
-App.propTypes = WelcomeScreenPropTypes;
+App.propTypes = {
+  errorsLimit: PropTypes.number.isRequired,
+};
 
 export default App;
