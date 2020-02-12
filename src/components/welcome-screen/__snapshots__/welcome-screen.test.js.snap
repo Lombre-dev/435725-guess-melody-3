@@ -6,7 +6,7 @@ exports[`<WelcomeScreen /> errors limit must be finite, positive, whole 1`] = `
 </p>
 `;
 
-exports[`<WelcomeScreen /> match snapshot 1`] = `
+exports[`<WelcomeScreen /> match pattern 1`] = `
 <section
   className="welcome"
 >
