@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<WelcomeScreen /> errors limit must be finite, positive, whole 1`] = `
+exports[`<WelcomeScreen /> errors limit must be finite, positive, integer, more 0 1`] = `
 <p>
   Что-то пошло не так :(
 </p>
