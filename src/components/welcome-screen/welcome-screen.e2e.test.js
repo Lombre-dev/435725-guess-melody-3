@@ -1,7 +1,7 @@
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import WelcomeScreen from './welcome-screen.jsx';
+import WelcomeScreen from './welcome-screen';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -9,7 +9,7 @@ Enzyme.configure({
 
 describe(`<WelcomeScreen />`, () => {
 
-  it(`simulate start game`, () => {
+  it(`welcome button should be clicked`, () => {
 
     const errorsLimit = 3;
     const handleWelcomeButtonClick = jest.fn();

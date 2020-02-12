@@ -2,16 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
-
-  if (
-    isNaN(errorsLimit) ||
-    !isFinite(errorsLimit) ||
-    errorsLimit < 1 ||
-    errorsLimit !== Math.round(errorsLimit)
-  ) {
-    return <p>Что-то пошло не так :(</p>;
-  }
-
   return (
     <section className="welcome">
       <div className="welcome__logo">
