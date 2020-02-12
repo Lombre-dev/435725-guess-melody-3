@@ -22,7 +22,7 @@ describe(`<WelcomeScreen />`, () => {
   // Можно обойтись без крайностей, но почему бы и нет :)
   // Нужны ли проверки на валидацию данных в snap тестах,
   // или при необходимости выносить в unit-test?
-  it(`errors limit must be finite, positive, whole`, () => {
+  it(`errors limit must be finite, positive, integer, more 0`, () => {
 
     const result = renderer
       .create(<WelcomeScreen

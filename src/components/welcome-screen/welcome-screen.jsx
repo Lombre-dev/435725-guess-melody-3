@@ -6,7 +6,7 @@ const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
   if (
     isNaN(errorsLimit) ||
     !isFinite(errorsLimit) ||
-    errorsLimit < 0 ||
+    errorsLimit < 1 ||
     errorsLimit !== Math.round(errorsLimit)
   ) {
     return <p>Что-то пошло не так :(</p>;
