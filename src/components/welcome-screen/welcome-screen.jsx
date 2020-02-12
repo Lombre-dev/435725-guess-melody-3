@@ -1,12 +1,23 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
+const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
 
-const WelcomeScreen = ({errorsLimit}) => {
+  if (
+    isNaN(errorsLimit) ||
+    !isFinite(errorsLimit) ||
+    errorsLimit < 0 ||
+    errorsLimit !== Math.round(errorsLimit)
+  ) {
+    return <p>Что-то пошло не так :(</p>;
+  }
+
   return (
     <section className="welcome">
-      <div className="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83" /></div>
-      <button className="welcome__button">
+      <div className="welcome__logo">
+        <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83" />
+      </div>
+      <button className="welcome__button" onClick={onWelcomeButtonClick}>
         <span className="visually-hidden">Начать игру</span>
       </button>
       <h2 className="welcome__rules-title">Правила игры</h2>
@@ -21,8 +32,8 @@ const WelcomeScreen = ({errorsLimit}) => {
 };
 
 WelcomeScreen.propTypes = {
-  // максимально допустимое число ошибок
   errorsLimit: PropTypes.number.isRequired,
+  onWelcomeButtonClick: PropTypes.func.isRequired,
 };
 
 export default WelcomeScreen;
