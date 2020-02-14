@@ -11,7 +11,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
       checks: this.props.trackList.map(() => false),
     };
 
-    this._handleCheckboxClick = this._updateChecks.bind(this);
+    this._updateChecks = this._updateChecks.bind(this);
   }
 
   _updateChecks(index, checked) {
