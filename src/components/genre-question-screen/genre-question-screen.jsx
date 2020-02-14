@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {GENRES} from '../consts';
 import {Track} from '../types';
 
 export default class GenreQuestionScreen extends React.PureComponent {
@@ -8,7 +9,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
     super(props);
 
     this.state = {
-      checks: this.props.trackList.map(() => false),
+      checks: this.props.question.trackList.map(() => false),
     };
 
     this._updateChecks = this._updateChecks.bind(this);
@@ -30,7 +31,8 @@ export default class GenreQuestionScreen extends React.PureComponent {
   render() {
 
     const {checks} = this.state;
-    const {trackList, onAnswerCallback} = this.props;
+    const {question, onAnswerCallback} = this.props;
+    const {genre, trackList} = question;
 
     return (
       <section className="game game--genre">
@@ -60,11 +62,11 @@ export default class GenreQuestionScreen extends React.PureComponent {
         </header>
 
         <section className="game__screen">
-          <h2 className="game__title">Выберите инди-рок треки</h2>
+          <h2 className="game__title">{`Выберите ${genre} треки`}</h2>
           <form className="game__tracks" onSubmit={
             (e) => {
               e.preventDefault();
-              onAnswerCallback({answer: this.state.checks});
+              onAnswerCallback({question, answer: this.state.checks});
             }
           }>
             {
@@ -107,6 +109,9 @@ export default class GenreQuestionScreen extends React.PureComponent {
 }
 
 GenreQuestionScreen.propTypes = {
-  trackList: PropTypes.arrayOf(Track).isRequired,
+  question: PropTypes.shape({
+    genre: PropTypes.oneOf(GENRES).isRequired,
+    trackList: PropTypes.arrayOf(Track).isRequired,
+  }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
 };

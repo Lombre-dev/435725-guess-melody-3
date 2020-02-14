@@ -6,7 +6,8 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
   render() {
 
-    const {track, artistList, onAnswerCallback} = this.props;
+    const {question, onAnswerCallback} = this.props;
+    const {track, artistList} = question;
 
     return (
       <section className="game game--artist" >
@@ -62,7 +63,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
                       id={`answer-${counter}`}
                       onChange={
                         () => {
-                          onAnswerCallback({answer: index});
+                          onAnswerCallback({question, answer: index});
                         }
                       }
                     />
@@ -81,7 +82,9 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 }
 
 ArtistQuestionScreen.propTypes = {
-  track: Track.isRequired,
-  artistList: PropTypes.arrayOf(Artist).isRequired,
+  question: PropTypes.shape({
+    track: Track.isRequired,
+    artistList: PropTypes.arrayOf(Artist).isRequired,
+  }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
 };

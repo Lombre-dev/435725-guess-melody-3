@@ -15,7 +15,7 @@ export const Track = PropTypes.shape({
 
 export const ArtistQuestion = PropTypes.shape({
   type: PropTypes.oneOf(QUESTION_TYPES).isRequired,
-  track: Track,
+  track: Track.isRequired,
   artistList: PropTypes.arrayOf(Artist).isRequired,
 });
 

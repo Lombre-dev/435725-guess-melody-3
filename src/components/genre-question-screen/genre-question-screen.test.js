@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import GenreQuestionScreen from './genre-question-screen';
 
+const GENRE = `rock`;
 const TRACKS = [
   {
     artist: {
@@ -46,9 +47,14 @@ describe(`<GenreQuestionScreen />`, () => {
 
   it(`render should be match markup`, () => {
 
+    const question = {
+      genre: GENRE,
+      trackList: TRACKS,
+    };
+
     const result = renderer
       .create(<GenreQuestionScreen
-        trackList={TRACKS}
+        question={question}
         onAnswerCallback={handleAnswer}
       />)
       .toJSON();

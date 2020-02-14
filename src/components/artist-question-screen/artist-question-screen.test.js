@@ -35,10 +35,14 @@ describe(`<ArtistQuestionScreen />`, () => {
 
   it(`render should be match markup`, () => {
 
+    const question = {
+      track: TRACK,
+      artistList: ARTISTS,
+    };
+
     const result = renderer
       .create(<ArtistQuestionScreen
-        track={TRACK}
-        artistList={ARTISTS}
+        question={question}
         onAnswerCallback={handleClick}
       />)
       .toJSON();

@@ -24,9 +24,9 @@ export default class App extends React.PureComponent {
     this._handleAnswer({});
   }
 
-  _handleAnswer({_answer}) {
+  _handleAnswer({_question, _answer}) {
 
-    // console.log(answer);
+    // console.log(question, answer);
 
     this.setState((prevState) => {
 
@@ -51,15 +51,14 @@ export default class App extends React.PureComponent {
         case ARTIST_QUESITON_TYPE:
           return (
             <ArtistQuestionScreen
-              track={question.track}
-              artistList={question.artistList}
+              question={question}
               onAnswerCallback={this._handleAnswer}
             />
           );
         case GENRE_QUESTION_TYPE:
           return (
             <GenreQuestionScreen
-              trackList={question.trackList}
+              question={question}
               onAnswerCallback={this._handleAnswer}
             />
           );
@@ -87,14 +86,13 @@ export default class App extends React.PureComponent {
         </Route>
         <Route exact path='/dev-artist'>
           <ArtistQuestionScreen
-            track={questionList[0].track}
-            artistList={questionList[0].artistList}
+            question={questionList[0]}
             onAnswerCallback={this._handleAnswer}
           />
         </Route>
         <Route exact path='/dev-genre'>
           <GenreQuestionScreen
-            trackList={questionList[1].trackList}
+            question={questionList[1]}
             onAnswerCallback={this._handleAnswer}
           />
         </Route>

@@ -7,6 +7,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const GENRE = `rock`;
 const TRACKS = [
   {
     artist: {
@@ -32,7 +33,7 @@ const TRACKS = [
       image: ``,
     },
     title: `Track 3`,
-    genre: `rock`,
+    genre: `classic`,
     src: ``,
   },
   {
@@ -41,7 +42,7 @@ const TRACKS = [
       image: ``,
     },
     title: `Track 4`,
-    genre: `rock`,
+    genre: `ska`,
     src: ``,
   },
 ];
@@ -51,9 +52,13 @@ describe(`<GenreQuestionScreen />`, () => {
   it(`answer callback should be called`, () => {
 
     const handleAnswer = jest.fn();
+    const question = {
+      genre: GENRE,
+      trackList: TRACKS,
+    };
 
     const result = shallow(<GenreQuestionScreen
-      trackList={TRACKS}
+      question={question}
       onAnswerCallback={handleAnswer}
     />);
 
@@ -69,12 +74,17 @@ describe(`<GenreQuestionScreen />`, () => {
   it(`user answer should be equal sample`, () => {
 
     const handleAnswer = jest.fn();
+    const question = {
+      genre: GENRE,
+      trackList: TRACKS,
+    };
     const sample = {
+      question,
       answer: [false, true, false, true],
     };
 
     const result = shallow(<GenreQuestionScreen
-      trackList={TRACKS}
+      question={question}
       onAnswerCallback={handleAnswer}
     />);
 

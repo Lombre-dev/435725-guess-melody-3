@@ -61,7 +61,7 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
     <h2
       className="game__title"
     >
-      Выберите инди-рок треки
+      Выберите rock треки
     </h2>
     <form
       className="game__tracks"

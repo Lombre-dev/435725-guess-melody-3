@@ -40,10 +40,13 @@ describe(`<ArtistQuestionScreen />`, () => {
   it(`answer callback should be called`, () => {
 
     const handleAnswer = jest.fn();
+    const question = {
+      track: TRACK,
+      artistList: ARTISTS,
+    };
 
     const result = shallow(<ArtistQuestionScreen
-      track={TRACK}
-      artistList={ARTISTS}
+      question={question}
       onAnswerCallback={handleAnswer}
     />);
 
@@ -58,13 +61,17 @@ describe(`<ArtistQuestionScreen />`, () => {
   it(`user answer should be equal sample`, () => {
 
     const handleAnswer = jest.fn();
+    const question = {
+      track: TRACK,
+      artistList: ARTISTS,
+    };
     const sample = {
+      question,
       answer: 1,
     };
 
     const result = shallow(<ArtistQuestionScreen
-      track={TRACK}
-      artistList={ARTISTS}
+      question={question}
       onAnswerCallback={handleAnswer}
     />);
 
