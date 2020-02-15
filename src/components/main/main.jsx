@@ -13,7 +13,6 @@ export default class Main extends React.PureComponent {
 
     this.state = {
       step: -1,
-      isStarted: false,
     };
 
     this._handleStart = this._handleStart.bind(this);
