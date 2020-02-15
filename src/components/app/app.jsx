@@ -3,8 +3,8 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {HANDLE_QUESTION_ANSWER} from '../../mocks/questions';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import GameStateMachine from '../game-state-machine/game-state-machine';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
+import Main from '../main/main';
 import {Questions} from '../types';
 
 export default class App extends React.PureComponent {
@@ -16,7 +16,7 @@ export default class App extends React.PureComponent {
     return (
       <BrowserRouter>
         <Route exact path='/'>
-          <GameStateMachine
+          <Main
             errorsLimit={errorsLimit}
             questions={questions}
           />

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import GameStateMachine from './game-state-machine';
+import Main from './main';
 
 const ERRORS_LIMIT = 3;
 const QUESTIONS = [
@@ -78,12 +78,12 @@ const QUESTIONS = [
   },
 ];
 
-describe(`<GameStateMachine />`, () => {
+describe(`<Main />`, () => {
 
   it(`render should be match markup`, () => {
 
     const result = renderer
-      .create(<GameStateMachine
+      .create(<Main
         errorsLimit={ERRORS_LIMIT}
         questions={QUESTIONS}
       />)

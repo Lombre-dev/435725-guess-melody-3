@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GameStateMachine /> render should be match markup 1`] = `
+exports[`<Main /> render should be match markup 1`] = `
 <section
   className="welcome"
 >

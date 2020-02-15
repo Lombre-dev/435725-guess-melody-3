@@ -6,7 +6,7 @@ import GenreQuestionScreen from '../genre-question-screen/genre-question-screen'
 import {Questions} from '../types';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 
-export default class GameStateMachine extends React.PureComponent {
+export default class Main extends React.PureComponent {
 
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ export default class GameStateMachine extends React.PureComponent {
 
   _handleQuestionAnswer({_question, _answers}) {
     if (this._isLastQuestion()) {
-      this._reset();
+      this._handleEnd();
     } else {
       this._nextQuestion();
     }
@@ -52,7 +52,7 @@ export default class GameStateMachine extends React.PureComponent {
     });
   }
 
-  _reset() {
+  _handleEnd() {
     this.setState(() => {
       return {
         step: -1,
@@ -94,7 +94,7 @@ export default class GameStateMachine extends React.PureComponent {
   }
 }
 
-GameStateMachine.propTypes = {
+Main.propTypes = {
   errorsLimit: PropTypes.number.isRequired,
   questions: Questions.isRequired,
 };
