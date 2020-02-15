@@ -1,99 +1,36 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
+import {HANDLE_QUESTION_ANSWER} from '../../mocks/questions';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import {ARTIST_QUESITON_TYPE, GENRE_QUESTION_TYPE} from '../consts';
+import GameStateMachine from '../game-state-machine/game-state-machine';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
-import {QuestionList} from '../types';
-import WelcomeScreen from '../welcome-screen/welcome-screen';
+import {Questions} from '../types';
 
 export default class App extends React.PureComponent {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      step: -1,
-    };
-
-    this._handleWelcomeButtonClick = this._handleWelcomeButtonClick.bind(this);
-    this._handleAnswer = this._handleAnswer.bind(this);
-  }
-
-  _handleWelcomeButtonClick() {
-    this._handleAnswer({});
-  }
-
-  _handleAnswer({_question, _answer}) {
-
-    // console.log(question, answer);
-
-    this.setState((prevState) => {
-
-      const {questionList} = this.props;
-
-      return {
-        step: prevState.step < questionList.length - 1 ? prevState.step + 1 : -1,
-      };
-    });
-  }
-
-  _renderStep() {
-
-    const {step} = this.state;
-    const {errorsLimit, questionList} = this.props;
-
-    if (step >= 0 && this.state.step < questionList.length) {
-
-      const question = questionList[step];
-
-      switch (question.type) {
-        case ARTIST_QUESITON_TYPE:
-          return (
-            <ArtistQuestionScreen
-              question={question}
-              onAnswerCallback={this._handleAnswer}
-            />
-          );
-        case GENRE_QUESTION_TYPE:
-          return (
-            <GenreQuestionScreen
-              question={question}
-              onAnswerCallback={this._handleAnswer}
-            />
-          );
-      }
-    }
-
-    return (
-      <WelcomeScreen
-        errorsLimit={errorsLimit}
-        onWelcomeButtonClick={this._handleWelcomeButtonClick}
-      />
-    );
-  }
-
   render() {
 
-    const {questionList} = this.props;
+    const {errorsLimit, questions} = this.props;
 
     return (
       <BrowserRouter>
         <Route exact path='/'>
-          {
-            this._renderStep()
-          }
+          <GameStateMachine
+            errorsLimit={errorsLimit}
+            questions={questions}
+          />
         </Route>
         <Route exact path='/dev-artist'>
           <ArtistQuestionScreen
-            question={questionList[0]}
-            onAnswerCallback={this._handleAnswer}
+            question={questions[0]}
+            onAnswerCallback={HANDLE_QUESTION_ANSWER}
           />
         </Route>
         <Route exact path='/dev-genre'>
           <GenreQuestionScreen
-            question={questionList[1]}
-            onAnswerCallback={this._handleAnswer}
+            question={questions[1]}
+            onAnswerCallback={HANDLE_QUESTION_ANSWER}
           />
         </Route>
       </BrowserRouter>
@@ -103,5 +40,5 @@ export default class App extends React.PureComponent {
 
 App.propTypes = {
   errorsLimit: PropTypes.number.isRequired,
-  questionList: QuestionList.isRequired,
+  questions: Questions.isRequired,
 };

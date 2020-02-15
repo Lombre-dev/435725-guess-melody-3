@@ -1,6 +1,7 @@
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
+import ArtistQuestionAnswer from '../artist-question-answer/artist-question-answer';
 import ArtistQuestionScreen from './artist-question-screen';
 
 Enzyme.configure({
@@ -34,25 +35,26 @@ const ARTISTS = [
     image: ``,
   },
 ];
+const QUESTION = {
+  track: TRACK,
+  answers: ARTISTS,
+};
 
 describe(`<ArtistQuestionScreen />`, () => {
 
   it(`answer callback should be called`, () => {
 
     const handleAnswer = jest.fn();
-    const question = {
-      track: TRACK,
-      artistList: ARTISTS,
-    };
 
-    const result = shallow(<ArtistQuestionScreen
-      question={question}
+    const result = mount(<ArtistQuestionScreen
+      question={QUESTION}
       onAnswerCallback={handleAnswer}
     />);
 
     result
-      .find(`.artist__input`)
+      .find(ArtistQuestionAnswer)
       .at(0)
+      .find(`.artist__input`)
       .simulate(`change`);
 
     expect(handleAnswer).toHaveBeenCalledTimes(1);
@@ -61,23 +63,20 @@ describe(`<ArtistQuestionScreen />`, () => {
   it(`user answer should be equal sample`, () => {
 
     const handleAnswer = jest.fn();
-    const question = {
-      track: TRACK,
-      artistList: ARTISTS,
-    };
     const sample = {
-      question,
+      question: QUESTION,
       answer: 1,
     };
 
-    const result = shallow(<ArtistQuestionScreen
-      question={question}
+    const result = mount(<ArtistQuestionScreen
+      question={QUESTION}
       onAnswerCallback={handleAnswer}
     />);
 
     result
-      .find(`.artist__input`)
+      .find(ArtistQuestionAnswer)
       .at(1)
+      .find(`.artist__input`)
       .simulate(`change`);
 
     expect(handleAnswer.mock.calls[0][0]).toMatchObject(sample);

@@ -87,6 +87,40 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
           <input
             checked={false}
             className="game__input visually-hidden"
+            id="answer-0"
+            name="answer"
+            onChange={[Function]}
+            type="checkbox"
+            value="answer-0"
+          />
+          <label
+            className="game__check"
+            htmlFor="answer-0"
+          >
+            Отметить
+          </label>
+        </div>
+      </div>
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio
+            src=""
+          />
+        </div>
+        <div
+          className="game__answer"
+        >
+          <input
+            checked={false}
+            className="game__input visually-hidden"
             id="answer-1"
             name="answer"
             onChange={[Function]}
@@ -164,40 +198,6 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
           <label
             className="game__check"
             htmlFor="answer-3"
-          >
-            Отметить
-          </label>
-        </div>
-      </div>
-      <div
-        className="track"
-      >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src=""
-          />
-        </div>
-        <div
-          className="game__answer"
-        >
-          <input
-            checked={false}
-            className="game__input visually-hidden"
-            id="answer-4"
-            name="answer"
-            onChange={[Function]}
-            type="checkbox"
-            value="answer-4"
-          />
-          <label
-            className="game__check"
-            htmlFor="answer-4"
           >
             Отметить
           </label>

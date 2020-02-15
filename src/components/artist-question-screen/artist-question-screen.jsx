@@ -1,13 +1,27 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import ArtistQuestionAnswer from '../artist-question-answer/artist-question-answer';
 import {Artist, Track} from '../types';
 
 export default class ArtistQuestionScreen extends React.PureComponent {
 
-  render() {
+  constructor(props) {
+    super(props);
+
+    this._handleAnswerSelect = this._handleAnswerSelect.bind(this);
+  }
+
+  _handleAnswerSelect({index}) {
 
     const {question, onAnswerCallback} = this.props;
-    const {track, artistList} = question;
+
+    onAnswerCallback({question, answer: index});
+  }
+
+  render() {
+
+    const {question} = this.props;
+    const {track, answers} = question;
 
     return (
       <section className="game game--artist" >
@@ -49,28 +63,14 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
           <form className="game__artist">
             {
-              artistList.map((value, index) => {
-
-                const counter = index + 1;
-
+              answers.map((value, index) => {
                 return (
-                  <div className="artist" key={value.name}>
-                    <input
-                      className="artist__input visually-hidden"
-                      type="radio"
-                      name="answer"
-                      value={`artist-${counter}`}
-                      id={`answer-${counter}`}
-                      onChange={
-                        () => {
-                          onAnswerCallback({question, answer: index});
-                        }
-                      }
-                    />
-                    <label className="artist__name" htmlFor={`answer-${counter}`}>
-                      <img className="artist__picture" src={value.image} alt={value.name} />{value.name}
-                    </label>
-                  </div>
+                  <ArtistQuestionAnswer
+                    key={value.name}
+                    index={index}
+                    artist={value}
+                    onSelectCallback={this._handleAnswerSelect}
+                  />
                 );
               })
             }
@@ -84,7 +84,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 ArtistQuestionScreen.propTypes = {
   question: PropTypes.shape({
     track: Track.isRequired,
-    artistList: PropTypes.arrayOf(Artist).isRequired,
+    answers: PropTypes.arrayOf(Artist).isRequired,
   }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
 };

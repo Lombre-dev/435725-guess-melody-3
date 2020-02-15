@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {GENRES} from '../consts';
+import GenreQuestionAnswer from '../genre-question-answer/genre-question-answer';
 import {Track} from '../types';
 
 export default class GenreQuestionScreen extends React.PureComponent {
@@ -9,13 +10,15 @@ export default class GenreQuestionScreen extends React.PureComponent {
     super(props);
 
     this.state = {
-      checks: this.props.question.trackList.map(() => false),
+      checks: this.props.question.answers.map(() => false),
     };
 
-    this._updateChecks = this._updateChecks.bind(this);
+    this._handleAnswerSelect = this._handleAnswerSelect.bind(this);
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
   }
 
-  _updateChecks(index, checked) {
+  _handleAnswerSelect({index, checked}) {
+
     this.setState((prevState) => {
 
       const checks = prevState.checks.slice();
@@ -28,11 +31,20 @@ export default class GenreQuestionScreen extends React.PureComponent {
     });
   }
 
+  _handleFormSubmit(e) {
+
+    const {question, onAnswerCallback} = this.props;
+    const {checks} = this.state;
+
+    e.preventDefault();
+    onAnswerCallback({question, answer: checks});
+  }
+
   render() {
 
     const {checks} = this.state;
-    const {question, onAnswerCallback} = this.props;
-    const {genre, trackList} = question;
+    const {question} = this.props;
+    const {genre, answers} = question;
 
     return (
       <section className="game game--genre">
@@ -63,40 +75,17 @@ export default class GenreQuestionScreen extends React.PureComponent {
 
         <section className="game__screen">
           <h2 className="game__title">{`Выберите ${genre} треки`}</h2>
-          <form className="game__tracks" onSubmit={
-            (e) => {
-              e.preventDefault();
-              onAnswerCallback({question, answer: this.state.checks});
-            }
-          }>
+          <form className="game__tracks" onSubmit={this._handleFormSubmit}>
             {
-              trackList.map((value, index) => {
-
-                const counter = index + 1;
-
+              answers.map((value, index) => {
                 return (
-                  <div className="track" key={value.title}>
-                    <button className="track__button track__button--play" type="button"></button>
-                    <div className="track__status">
-                      <audio src={value.src}></audio>
-                    </div>
-                    <div className="game__answer">
-                      <input
-                        className="game__input visually-hidden"
-                        type="checkbox"
-                        name="answer"
-                        value={`answer-${counter}`}
-                        id={`answer-${counter}`}
-                        checked={checks[index]}
-                        onChange={
-                          (e) => {
-                            this._updateChecks(index, e.target.checked);
-                          }
-                        }
-                      />
-                      <label className="game__check" htmlFor={`answer-${counter}`}>Отметить</label>
-                    </div>
-                  </div>
+                  <GenreQuestionAnswer
+                    key={value.title}
+                    index={index}
+                    checked={checks[index]}
+                    track={value}
+                    onSelectCallback={this._handleAnswerSelect}
+                  />
                 );
               })
             }
@@ -111,7 +100,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
 GenreQuestionScreen.propTypes = {
   question: PropTypes.shape({
     genre: PropTypes.oneOf(GENRES).isRequired,
-    trackList: PropTypes.arrayOf(Track).isRequired,
+    answers: PropTypes.arrayOf(Track).isRequired,
   }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
 };

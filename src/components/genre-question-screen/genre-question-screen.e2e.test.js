@@ -1,6 +1,7 @@
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
+import GenreQuestionAnswer from '../genre-question-answer/genre-question-answer';
 import GenreQuestionScreen from './genre-question-screen';
 
 Enzyme.configure({
@@ -54,10 +55,10 @@ describe(`<GenreQuestionScreen />`, () => {
     const handleAnswer = jest.fn();
     const question = {
       genre: GENRE,
-      trackList: TRACKS,
+      answers: TRACKS,
     };
 
-    const result = shallow(<GenreQuestionScreen
+    const result = mount(<GenreQuestionScreen
       question={question}
       onAnswerCallback={handleAnswer}
     />);
@@ -71,32 +72,32 @@ describe(`<GenreQuestionScreen />`, () => {
     expect(handleAnswer).toHaveBeenCalledTimes(1);
   });
 
-  it(`user answer should be equal sample`, () => {
+  it(`answer result should be equal sample`, () => {
 
     const handleAnswer = jest.fn();
     const question = {
       genre: GENRE,
-      trackList: TRACKS,
+      answers: TRACKS,
     };
     const sample = {
       question,
       answer: [false, true, false, true],
     };
 
-    const result = shallow(<GenreQuestionScreen
+    const result = mount(<GenreQuestionScreen
       question={question}
       onAnswerCallback={handleAnswer}
     />);
 
-    const elements = result.find(`.game__input`);
+    const elements = result.find(GenreQuestionAnswer);
     const simulateParams = {
       target: {
         checked: true,
       }
     };
 
-    elements.at(1).simulate(`change`, simulateParams);
-    elements.at(3).simulate(`change`, simulateParams);
+    elements.at(1).find(`.game__input`).simulate(`change`, simulateParams);
+    elements.at(3).find(`.game__input`).simulate(`change`, simulateParams);
 
     result.find(`.game__tracks`)
       .simulate(`submit`, {

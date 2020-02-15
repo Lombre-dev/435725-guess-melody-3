@@ -37,7 +37,7 @@ describe(`<ArtistQuestionScreen />`, () => {
 
     const question = {
       track: TRACK,
-      artistList: ARTISTS,
+      answers: ARTISTS,
     };
 
     const result = renderer

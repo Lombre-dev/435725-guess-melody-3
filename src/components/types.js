@@ -16,13 +16,13 @@ export const Track = PropTypes.shape({
 export const ArtistQuestion = PropTypes.shape({
   type: PropTypes.oneOf(QUESTION_TYPES).isRequired,
   track: Track.isRequired,
-  artistList: PropTypes.arrayOf(Artist).isRequired,
+  answers: PropTypes.arrayOf(Artist).isRequired,
 });
 
 export const GenreQuestion = PropTypes.shape({
   type: PropTypes.oneOf(QUESTION_TYPES).isRequired,
   genre: PropTypes.oneOf(GENRES).isRequired,
-  trackList: PropTypes.arrayOf(Track).isRequired,
+  answers: PropTypes.arrayOf(Track).isRequired,
 });
 
-export const QuestionList = PropTypes.arrayOf(PropTypes.oneOfType([ArtistQuestion, GenreQuestion]));
+export const Questions = PropTypes.arrayOf(PropTypes.oneOfType([ArtistQuestion, GenreQuestion]));

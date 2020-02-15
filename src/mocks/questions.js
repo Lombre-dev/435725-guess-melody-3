@@ -1,23 +1,28 @@
 import {ARTIST_QUESITON_TYPE, GENRE_QUESTION_TYPE} from '../components/consts';
 import {ARTISTS, TRACKS} from './data';
 
-const artistList = Object.values(ARTISTS);
-const trackList = Object.values(TRACKS);
+const artists = Object.values(ARTISTS);
+const tracks = Object.values(TRACKS);
 
-export const QUESTION_LIST = [
+export const QUESTIONS = [
   {
     type: ARTIST_QUESITON_TYPE,
-    track: trackList[Math.floor(Math.random() * trackList.length)],
-    artistList,
+    track: tracks[Math.floor(Math.random() * tracks.length)],
+    answers: artists,
   },
   {
     type: GENRE_QUESTION_TYPE,
     genre: `rock`,
-    trackList,
+    answers: tracks,
   },
   {
     type: ARTIST_QUESITON_TYPE,
-    track: trackList[Math.floor(Math.random() * trackList.length)],
-    artistList,
+    track: tracks[Math.floor(Math.random() * tracks.length)],
+    answers: artists,
   },
 ];
+
+export const HANDLE_QUESTION_ANSWER = (result) => {
+  // eslint-disable-next-line no-console
+  console.log(result);
+};

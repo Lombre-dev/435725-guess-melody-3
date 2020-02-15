@@ -41,7 +41,7 @@ const TRACKS = [
     src: ``,
   },
 ];
-const handleAnswer = () => {};
+const HANDLE_ANSWER = () => {};
 
 describe(`<GenreQuestionScreen />`, () => {
 
@@ -49,13 +49,13 @@ describe(`<GenreQuestionScreen />`, () => {
 
     const question = {
       genre: GENRE,
-      trackList: TRACKS,
+      answers: TRACKS,
     };
 
     const result = renderer
       .create(<GenreQuestionScreen
         question={question}
-        onAnswerCallback={handleAnswer}
+        onAnswerCallback={HANDLE_ANSWER}
       />)
       .toJSON();
 
