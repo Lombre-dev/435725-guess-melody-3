@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app';
+import Main from './main';
 
 const ERRORS_LIMIT = 3;
 const QUESTIONS = [
@@ -78,12 +78,12 @@ const QUESTIONS = [
   },
 ];
 
-describe(`<App />`, () => {
+describe(`<Main />`, () => {
 
   it(`render should be match markup`, () => {
 
     const result = renderer
-      .create(<App
+      .create(<Main
         errorsLimit={ERRORS_LIMIT}
         questions={QUESTIONS}
       />)

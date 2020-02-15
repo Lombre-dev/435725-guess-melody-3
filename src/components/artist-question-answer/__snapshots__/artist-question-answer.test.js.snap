@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ArtistQuestionAnswer /> render should be match markup 1`] = `
+<div
+  className="artist"
+>
+  <input
+    className="artist__input visually-hidden"
+    id="answer-0"
+    name="answer"
+    onChange={[Function]}
+    type="radio"
+    value="artist-0"
+  />
+  <label
+    className="artist__name"
+    htmlFor="answer-0"
+  >
+    <img
+      alt="Artist 1"
+      className="artist__picture"
+      src=""
+    />
+    Artist 1
+  </label>
+</div>
+`;
