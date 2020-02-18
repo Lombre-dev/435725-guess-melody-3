@@ -1,11 +1,3 @@
-const DICTIONARY = {
-  makeErrors: [`ошибку`, `ошибки`, `ошибок`],
-};
-
-export function getPluralFormOfMakeErrors(count) {
-  return getPluralForm(count, DICTIONARY.makeErrors);
-}
-
 export function getPluralForm(count, numerals) {
 
   let remainder = count % 100;

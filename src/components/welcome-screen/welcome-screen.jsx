@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {getPluralFormOfMakeErrors} from '../../utils/number-utls';
+import {getPluralForm} from '../../utils/get-plural-form';
 
 const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
   return (
@@ -15,7 +15,9 @@ const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
         <li>Нужно ответить на все вопросы.</li>
-        <li>Можно допустить {`${errorsLimit} ${getPluralFormOfMakeErrors(errorsLimit)}`}.</li>
+        <li>Можно допустить {
+          `${errorsLimit} ${getPluralForm(errorsLimit, [`ошибку`, `ошибки`, `ошибок`])}`
+        }.</li>
       </ul>
       <p className="welcome__text">Удачи!</p>
     </section>
