@@ -20,7 +20,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
   render() {
 
-    const {question} = this.props;
+    const {question, renderAudioPlayer} = this.props;
     const {track, answers} = question;
 
     return (
@@ -54,10 +54,9 @@ export default class ArtistQuestionScreen extends React.PureComponent {
           <h2 className="game__title">Кто исполняет эту песню?</h2>
           <div className="game__track">
             <div className="track">
-              <button className="track__button track__button--play" type="button"></button>
-              <div className="track__status">
-                <audio src={track.src}></audio>
-              </div>
+              {
+                renderAudioPlayer(track.src, 0)
+              }
             </div>
           </div>
 
@@ -87,4 +86,5 @@ ArtistQuestionScreen.propTypes = {
     answers: PropTypes.arrayOf(Artist).isRequired,
   }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
+  renderAudioPlayer: PropTypes.func.isRequired,
 };

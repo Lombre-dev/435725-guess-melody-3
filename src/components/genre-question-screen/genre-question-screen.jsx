@@ -43,7 +43,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
   render() {
 
     const {checks} = this.state;
-    const {question} = this.props;
+    const {question, renderAudioPlayer} = this.props;
     const {genre, answers} = question;
 
     return (
@@ -85,6 +85,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
                     checked={checks[index]}
                     track={value}
                     onSelectCallback={this._handleAnswerSelect}
+                    renderAudioPlayer={renderAudioPlayer}
                   />
                 );
               })
@@ -103,4 +104,5 @@ GenreQuestionScreen.propTypes = {
     answers: PropTypes.arrayOf(Track).isRequired,
   }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
+  renderAudioPlayer: PropTypes.func.isRequired,
 };

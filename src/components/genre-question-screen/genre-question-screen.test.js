@@ -42,6 +42,7 @@ const TRACKS = [
   },
 ];
 const HANDLE_ANSWER = () => {};
+const RENDER_AUDIO_PLAYER = () => {};
 
 describe(`<GenreQuestionScreen />`, () => {
 
@@ -56,6 +57,7 @@ describe(`<GenreQuestionScreen />`, () => {
       .create(<GenreQuestionScreen
         question={question}
         onAnswerCallback={HANDLE_ANSWER}
+        renderAudioPlayer={RENDER_AUDIO_PLAYER}
       />)
       .toJSON();
 

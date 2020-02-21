@@ -18,6 +18,8 @@ const TRACK = {
   src: ``
 };
 const CHECKED = false;
+const RENDER_AUDIO_PLAYER = () => {};
+
 
 describe(`<GenreQuestionAnswer />`, () => {
 
@@ -35,6 +37,7 @@ describe(`<GenreQuestionAnswer />`, () => {
       track={TRACK}
       checked={CHECKED}
       onSelectCallback={handleSelect}
+      renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
     result

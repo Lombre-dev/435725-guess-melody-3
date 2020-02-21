@@ -19,14 +19,13 @@ export default class GenreQuestionAnswer extends React.PureComponent {
 
   render() {
 
-    const {index, track, checked} = this.props;
+    const {index, track, checked, renderAudioPlayer} = this.props;
 
     return (
       <div className="track">
-        <button className="track__button track__button--play" type="button"></button>
-        <div className="track__status">
-          <audio src={track.src}></audio>
-        </div>
+        {
+          renderAudioPlayer(track.src, index)
+        }
         <div className="game__answer">
           <input
             className="game__input visually-hidden"
@@ -49,4 +48,5 @@ GenreQuestionAnswer.propTypes = {
   track: Track.isRequired,
   checked: PropTypes.bool,
   onSelectCallback: PropTypes.func.isRequired,
+  renderAudioPlayer: PropTypes.func.isRequired,
 };

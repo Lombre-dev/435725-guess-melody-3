@@ -14,6 +14,7 @@ const TRACK = {
 };
 const CHECKED = false;
 const HANDLE_SELECT = () => {};
+const RENDER_AUDIO_PLAYER = () => {};
 
 describe(`<GenreQuestionAnswer />`, () => {
 
@@ -25,6 +26,7 @@ describe(`<GenreQuestionAnswer />`, () => {
         track={TRACK}
         checked={CHECKED}
         onSelectCallback={HANDLE_SELECT}
+        renderAudioPlayer={RENDER_AUDIO_PLAYER}
       />)
       .toJSON();
 

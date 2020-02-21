@@ -29,21 +29,22 @@ const ARTISTS = [
     image: ``,
   },
 ];
-const handleClick = () => {};
+const QUESTION = {
+  track: TRACK,
+  answers: ARTISTS,
+};
+const RENDER_AUDIO_PLAYER = () => {};
+const HANDLE_CLICK = () => {};
 
 describe(`<ArtistQuestionScreen />`, () => {
 
   it(`render should be match markup`, () => {
 
-    const question = {
-      track: TRACK,
-      answers: ARTISTS,
-    };
-
     const result = renderer
       .create(<ArtistQuestionScreen
-        question={question}
-        onAnswerCallback={handleClick}
+        question={QUESTION}
+        onAnswerCallback={HANDLE_CLICK}
+        renderAudioPlayer={RENDER_AUDIO_PLAYER}
       />)
       .toJSON();
 

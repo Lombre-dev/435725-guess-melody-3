@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {withActivePlayer} from '../../hocs/with-active-player';
+import {TRACK_VOLUME} from '../../mocks/data';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
 import {ARTIST_QUESITON_TYPE, GENRE_QUESTION_TYPE} from '../consts';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
 import {Questions} from '../types';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
+
+const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen, TRACK_VOLUME);
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen, TRACK_VOLUME);
 
 export default class Main extends React.PureComponent {
 
@@ -69,14 +74,14 @@ export default class Main extends React.PureComponent {
       switch (question.type) {
         case ARTIST_QUESITON_TYPE:
           return (
-            <ArtistQuestionScreen
+            <ArtistQuestionScreenWrapped
               question={question}
               onAnswerCallback={this._handleQuestionAnswer}
             />
           );
         case GENRE_QUESTION_TYPE:
           return (
-            <GenreQuestionScreen
+            <GenreQuestionScreenWrapped
               question={question}
               onAnswerCallback={this._handleQuestionAnswer}
             />

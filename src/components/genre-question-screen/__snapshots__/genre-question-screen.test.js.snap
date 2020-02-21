@@ -70,17 +70,6 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src=""
-          />
-        </div>
         <div
           className="game__answer"
         >
@@ -104,17 +93,6 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src=""
-          />
-        </div>
         <div
           className="game__answer"
         >
@@ -138,17 +116,6 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src=""
-          />
-        </div>
         <div
           className="game__answer"
         >
@@ -172,17 +139,6 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src=""
-          />
-        </div>
         <div
           className="game__answer"
         >

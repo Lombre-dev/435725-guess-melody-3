@@ -47,6 +47,7 @@ const TRACKS = [
     src: ``,
   },
 ];
+const RENDER_AUDIO_PLAYER = () => {};
 
 describe(`<GenreQuestionScreen />`, () => {
 
@@ -61,6 +62,7 @@ describe(`<GenreQuestionScreen />`, () => {
     const result = mount(<GenreQuestionScreen
       question={question}
       onAnswerCallback={handleAnswer}
+      renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
     result
@@ -87,6 +89,7 @@ describe(`<GenreQuestionScreen />`, () => {
     const result = mount(<GenreQuestionScreen
       question={question}
       onAnswerCallback={handleAnswer}
+      renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
     const elements = result.find(GenreQuestionAnswer);

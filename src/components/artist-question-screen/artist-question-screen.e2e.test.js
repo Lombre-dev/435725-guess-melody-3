@@ -39,6 +39,7 @@ const QUESTION = {
   track: TRACK,
   answers: ARTISTS,
 };
+const RENDER_AUDIO_PLAYER = () => {};
 
 describe(`<ArtistQuestionScreen />`, () => {
 
@@ -49,6 +50,7 @@ describe(`<ArtistQuestionScreen />`, () => {
     const result = mount(<ArtistQuestionScreen
       question={QUESTION}
       onAnswerCallback={handleAnswer}
+      renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
     result
@@ -71,6 +73,7 @@ describe(`<ArtistQuestionScreen />`, () => {
     const result = mount(<ArtistQuestionScreen
       question={QUESTION}
       onAnswerCallback={handleAnswer}
+      renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
     result
