@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ArtistQuestionAnswer from '../artist-question-answer/artist-question-answer';
+import AudioPlayer from '../audio-player/audio-player';
 import {Artist, Track} from '../types';
 
 export default class ArtistQuestionScreen extends React.PureComponent {
@@ -20,7 +21,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
   render() {
 
-    const {question, renderAudioPlayer} = this.props;
+    const {question} = this.props;
     const {track, answers} = question;
 
     return (
@@ -54,9 +55,16 @@ export default class ArtistQuestionScreen extends React.PureComponent {
           <h2 className="game__title">Кто исполняет эту песню?</h2>
           <div className="game__track">
             <div className="track">
-              {
-                renderAudioPlayer(track.src, 0)
-              }
+              <AudioPlayer
+                id={0}
+                isPlaying={true}
+                isDisabled={false}
+                onCanPlayThrough={() => {}}
+                onPlay={() => {}}
+                onPause={() => {}}
+                onEnd={() => {}}
+                src={track.src}
+              />
             </div>
           </div>
 
@@ -86,5 +94,4 @@ ArtistQuestionScreen.propTypes = {
     answers: PropTypes.arrayOf(Artist).isRequired,
   }).isRequired,
   onAnswerCallback: PropTypes.func.isRequired,
-  renderAudioPlayer: PropTypes.func.isRequired,
 };

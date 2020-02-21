@@ -58,7 +58,11 @@ describe(`<GenreQuestionScreen />`, () => {
         question={question}
         onAnswerCallback={HANDLE_ANSWER}
         renderAudioPlayer={RENDER_AUDIO_PLAYER}
-      />)
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(result).toMatchSnapshot();

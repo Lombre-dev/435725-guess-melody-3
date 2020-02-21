@@ -27,7 +27,11 @@ describe(`<GenreQuestionAnswer />`, () => {
         checked={CHECKED}
         onSelectCallback={HANDLE_SELECT}
         renderAudioPlayer={RENDER_AUDIO_PLAYER}
-      />)
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(result).toMatchSnapshot();

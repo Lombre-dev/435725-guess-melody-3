@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import AudioPlayer from '../audio-player/audio-player';
 import {Track} from '../types';
 
 export default class GenreQuestionAnswer extends React.PureComponent {
@@ -19,13 +20,20 @@ export default class GenreQuestionAnswer extends React.PureComponent {
 
   render() {
 
-    const {index, track, checked, renderAudioPlayer} = this.props;
+    const {index, track, checked} = this.props;
 
     return (
       <div className="track">
-        {
-          renderAudioPlayer(track.src, index)
-        }
+        <AudioPlayer
+          id={index}
+          isPlaying={false}
+          isDisabled={false}
+          onCanPlayThrough={() => {}}
+          onPlay={() => {}}
+          onPause={() => {}}
+          onEnd={() => {}}
+          src={track.src}
+        />
         <div className="game__answer">
           <input
             className="game__input visually-hidden"
@@ -48,5 +56,4 @@ GenreQuestionAnswer.propTypes = {
   track: Track.isRequired,
   checked: PropTypes.bool,
   onSelectCallback: PropTypes.func.isRequired,
-  renderAudioPlayer: PropTypes.func.isRequired,
 };

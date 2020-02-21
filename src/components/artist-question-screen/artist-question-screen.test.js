@@ -33,7 +33,6 @@ const QUESTION = {
   track: TRACK,
   answers: ARTISTS,
 };
-const RENDER_AUDIO_PLAYER = () => {};
 const HANDLE_CLICK = () => {};
 
 describe(`<ArtistQuestionScreen />`, () => {
@@ -44,8 +43,11 @@ describe(`<ArtistQuestionScreen />`, () => {
       .create(<ArtistQuestionScreen
         question={QUESTION}
         onAnswerCallback={HANDLE_CLICK}
-        renderAudioPlayer={RENDER_AUDIO_PLAYER}
-      />)
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(result).toMatchSnapshot();

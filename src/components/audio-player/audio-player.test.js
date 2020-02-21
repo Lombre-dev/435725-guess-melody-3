@@ -2,9 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AudioPlayer from './audio-player';
 
+const ID = 0;
 const SRC = ``;
 const IS_PLAYING = false;
-const HANDLE_PLAY_BUTTON_CLICK = () => {};
+const IS_DISABLED = false;
+const HANDLE_EVENT = () => {};
 
 describe(`<AudioPlayer />`, () => {
 
@@ -12,9 +14,14 @@ describe(`<AudioPlayer />`, () => {
 
     const result = renderer
       .create(<AudioPlayer
-        src={SRC}
+        id={ID}
         isPlaying={IS_PLAYING}
-        onPlayButtonClick={HANDLE_PLAY_BUTTON_CLICK}
+        isDisabled={IS_DISABLED}
+        onCanPlayThrough={HANDLE_EVENT}
+        onPlay={HANDLE_EVENT}
+        onPause={HANDLE_EVENT}
+        onEnd={HANDLE_EVENT}
+        src={SRC}
       />, {
         createNodeMock: () => {
           return {};
