@@ -71,14 +71,14 @@ export default class Main extends React.PureComponent {
           return (
             <ArtistQuestionScreen
               question={question}
-              onAnswerCallback={this._handleQuestionAnswer}
+              onAnswer={this._handleQuestionAnswer}
             />
           );
         case GENRE_QUESTION_TYPE:
           return (
             <GenreQuestionScreen
               question={question}
-              onAnswerCallback={this._handleQuestionAnswer}
+              onAnswer={this._handleQuestionAnswer}
             />
           );
       }

@@ -14,9 +14,9 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
   _handleAnswerSelect({index}) {
 
-    const {question, onAnswerCallback} = this.props;
+    const {question, onAnswer} = this.props;
 
-    onAnswerCallback({question, answer: index});
+    onAnswer({question, answer: index});
   }
 
   render() {
@@ -63,6 +63,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
                 onPlay={() => {}}
                 onPause={() => {}}
                 onEnd={() => {}}
+                onPlayButtonClick={() => {}}
                 src={track.src}
               />
             </div>
@@ -76,7 +77,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
                     key={value.name}
                     index={index}
                     artist={value}
-                    onSelectCallback={this._handleAnswerSelect}
+                    onSelect={this._handleAnswerSelect}
                   />
                 );
               })
@@ -93,5 +94,5 @@ ArtistQuestionScreen.propTypes = {
     track: Track.isRequired,
     answers: PropTypes.arrayOf(Artist).isRequired,
   }).isRequired,
-  onAnswerCallback: PropTypes.func.isRequired,
+  onAnswer: PropTypes.func.isRequired,
 };

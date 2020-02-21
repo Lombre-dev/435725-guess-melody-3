@@ -13,9 +13,9 @@ export default class GenreQuestionAnswer extends React.PureComponent {
 
   _handleChange(e) {
 
-    const {index, onSelectCallback} = this.props;
+    const {index, onSelect} = this.props;
 
-    onSelectCallback({index, checked: e.target.checked});
+    onSelect({index, checked: e.target.checked});
   }
 
   render() {
@@ -32,6 +32,7 @@ export default class GenreQuestionAnswer extends React.PureComponent {
           onPlay={() => {}}
           onPause={() => {}}
           onEnd={() => {}}
+          onPlayButtonClick={() => {}}
           src={track.src}
         />
         <div className="game__answer">
@@ -55,5 +56,5 @@ GenreQuestionAnswer.propTypes = {
   index: PropTypes.number.isRequired,
   track: Track.isRequired,
   checked: PropTypes.bool,
-  onSelectCallback: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };

@@ -41,7 +41,6 @@ export default class AudioPlayer extends React.PureComponent {
     audio.src = ``;
   }
 
-  /* пока не уверен, что будет нужна
   componentDidUpdate() {
 
     const {isPlaying} = this.props;
@@ -53,7 +52,6 @@ export default class AudioPlayer extends React.PureComponent {
       audio.pause();
     }
   }
-  */
 
   _handleAudioCanPlayThrough() {
 
@@ -94,14 +92,9 @@ export default class AudioPlayer extends React.PureComponent {
 
   _handleClick() {
 
-    const audio = this._audioRef.current;
-    const {isPlaying} = this.props;
+    const {id, onPlayButtonClick} = this.props;
 
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
+    onPlayButtonClick({id});
   }
 
   render() {
@@ -135,6 +128,8 @@ AudioPlayer.propTypes = {
   onEnd: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
   volume: PropTypes.number,
+  // вернул, все же, коллбек по нажатию
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 AudioPlayer.defaultProps = {

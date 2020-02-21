@@ -42,7 +42,7 @@ describe(`<ArtistQuestionScreen />`, () => {
     const result = renderer
       .create(<ArtistQuestionScreen
         question={QUESTION}
-        onAnswerCallback={HANDLE_CLICK}
+        onAnswer={HANDLE_CLICK}
       />, {
         createNodeMock: () => {
           return {};

@@ -25,7 +25,7 @@ describe(`<GenreQuestionAnswer />`, () => {
         index={INDEX}
         track={TRACK}
         checked={CHECKED}
-        onSelectCallback={HANDLE_SELECT}
+        onSelect={HANDLE_SELECT}
         renderAudioPlayer={RENDER_AUDIO_PLAYER}
       />, {
         createNodeMock: () => {

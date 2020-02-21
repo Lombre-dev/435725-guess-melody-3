@@ -59,9 +59,11 @@ describe(`<GenreQuestionScreen />`, () => {
       answers: TRACKS,
     };
 
+    jest.spyOn(HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+
     const result = mount(<GenreQuestionScreen
       question={question}
-      onAnswerCallback={handleAnswer}
+      onAnswer={handleAnswer}
       renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
@@ -86,10 +88,11 @@ describe(`<GenreQuestionScreen />`, () => {
       answer: [false, true, false, true],
     };
 
+    jest.spyOn(HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+
     const result = mount(<GenreQuestionScreen
       question={question}
-      onAnswerCallback={handleAnswer}
-      renderAudioPlayer={RENDER_AUDIO_PLAYER}
+      onAnswer={handleAnswer}
     />);
 
     const elements = result.find(GenreQuestionAnswer);

@@ -24,13 +24,13 @@ export default class App extends React.PureComponent {
         <Route exact path='/dev-artist'>
           <ArtistQuestionScreen
             question={questions[0]}
-            onAnswerCallback={HANDLE_QUESTION_ANSWER}
+            onAnswer={HANDLE_QUESTION_ANSWER}
           />
         </Route>
         <Route exact path='/dev-genre'>
           <GenreQuestionScreen
             question={questions[1]}
-            onAnswerCallback={HANDLE_QUESTION_ANSWER}
+            onAnswer={HANDLE_QUESTION_ANSWER}
           />
         </Route>
       </BrowserRouter>

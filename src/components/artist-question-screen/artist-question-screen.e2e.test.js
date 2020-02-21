@@ -48,7 +48,7 @@ describe(`<ArtistQuestionScreen />`, () => {
 
     const result = mount(<ArtistQuestionScreen
       question={QUESTION}
-      onAnswerCallback={handleAnswer}
+      onAnswer={handleAnswer}
     />);
 
     result
@@ -70,7 +70,7 @@ describe(`<ArtistQuestionScreen />`, () => {
 
     const result = mount(<ArtistQuestionScreen
       question={QUESTION}
-      onAnswerCallback={handleAnswer}
+      onAnswer={handleAnswer}
     />);
 
     result

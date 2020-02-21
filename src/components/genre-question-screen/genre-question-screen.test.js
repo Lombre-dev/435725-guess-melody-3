@@ -56,7 +56,7 @@ describe(`<GenreQuestionScreen />`, () => {
     const result = renderer
       .create(<GenreQuestionScreen
         question={question}
-        onAnswerCallback={HANDLE_ANSWER}
+        onAnswer={HANDLE_ANSWER}
         renderAudioPlayer={RENDER_AUDIO_PLAYER}
       />, {
         createNodeMock: () => {

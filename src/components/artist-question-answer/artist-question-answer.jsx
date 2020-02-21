@@ -12,9 +12,9 @@ export default class ArtistQuestionAnswer extends React.PureComponent {
 
   _handleChange() {
 
-    const {index, onSelectCallback} = this.props;
+    const {index, onSelect} = this.props;
 
-    onSelectCallback({index});
+    onSelect({index});
   }
 
   render() {
@@ -42,5 +42,5 @@ export default class ArtistQuestionAnswer extends React.PureComponent {
 ArtistQuestionAnswer.propTypes = {
   index: PropTypes.number.isRequired,
   artist: Artist.isRequired,
-  onSelectCallback: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };

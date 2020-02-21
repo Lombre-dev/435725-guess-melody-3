@@ -16,11 +16,7 @@ describe(`<AudioPlayer />`, () => {
 
   it(`play button should be clicked`, () => {
 
-    const handlePlay = jest.fn();
     const handleEvent = jest.fn();
-
-    jest.spyOn(HTMLMediaElement.prototype, `play`).mockImplementation(handlePlay);
-    // jest.spyOn(HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
 
     const result = mount(<AudioPlayer
       id={ID}
@@ -31,16 +27,17 @@ describe(`<AudioPlayer />`, () => {
       onCanPlayThrough={handleEvent}
       onPause={handleEvent}
       onEnd={handleEvent}
+      onPlayButtonClick={handleEvent}
     />);
 
     result
       .find(`.track__button`)
       .simulate(`click`);
 
-    expect(handlePlay).toHaveBeenCalledTimes(1);
+    expect(handleEvent).toHaveBeenCalledTimes(1);
   });
 
-  it(`play button should be switched to play state`, () => {
+  it(`component should be switched to play state`, () => {
 
     const isPlaying = false;
     const handlePlay = jest.fn();
@@ -59,16 +56,18 @@ describe(`<AudioPlayer />`, () => {
       onPause={handleEvent}
       onCanPlayThrough={handleEvent}
       onEnd={handleEvent}
+      onPlayButtonClick={handleEvent}
     />);
 
     result
-      .find(`.track__button--play`)
-      .simulate(`click`);
+      .setProps({
+        isPlaying: true,
+      });
 
     expect(handlePlay).toHaveBeenCalledTimes(1);
   });
 
-  it(`play button should be switched to pause state`, () => {
+  it(`component should be switched to pause state`, () => {
 
     const isPlaying = true;
     const handlePlay = jest.fn();
@@ -87,11 +86,13 @@ describe(`<AudioPlayer />`, () => {
       onPause={handleEvent}
       onCanPlayThrough={handleEvent}
       onEnd={handleEvent}
+      onPlayButtonClick={handleEvent}
     />);
 
     result
-      .find(`.track__button--pause`)
-      .simulate(`click`);
+      .setProps({
+        isPlaying: false,
+      });
 
     expect(handlePause).toHaveBeenCalledTimes(1);
   });
