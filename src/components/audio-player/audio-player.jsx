@@ -7,7 +7,6 @@ export default class AudioPlayer extends React.PureComponent {
 
     this._audioRef = React.createRef();
 
-    this._handleAudioCanPlayThrough = this._handleAudioCanPlayThrough.bind(this);
     this._handleAudioPlay = this._handleAudioPlay.bind(this);
     this._handleAudioPause = this._handleAudioPause.bind(this);
     this._handleAudioEnd = this._handleAudioEnd.bind(this);
@@ -17,13 +16,13 @@ export default class AudioPlayer extends React.PureComponent {
 
   componentDidMount() {
 
-    const {src, volume} = this.props;
+    const {src, volume, onCanPlayThrough, onPause, onEnd} = this.props;
     const audio = this._audioRef.current;
 
-    audio.oncanplaythrough = this._handleAudioCanPlayThrough;
+    audio.oncanplaythrough = onCanPlayThrough;
     audio.onplay = this._handleAudioPlay;
-    audio.onpause = this._handleAudioPause;
-    audio.onend = this._handleAudioEnd;
+    audio.onpause = onPause;
+    audio.onend = onEnd;
     audio.ontimeupdate = this._handleAudioTimeUpdate;
     audio.volume = volume;
     audio.src = src;
@@ -53,32 +52,11 @@ export default class AudioPlayer extends React.PureComponent {
     }
   }
 
-  _handleAudioCanPlayThrough() {
-
-    const {id, onCanPlayThrough} = this.props;
-
-    onCanPlayThrough({id});
-  }
-
   _handleAudioPlay() {
 
     const {id, onPlay} = this.props;
 
     onPlay({id});
-  }
-
-  _handleAudioPause() {
-
-    const {id, onPause} = this.props;
-
-    onPause({id});
-  }
-
-  _handleAudioEnd() {
-
-    const {id, onEnd} = this.props;
-
-    onEnd({id});
   }
 
   _handleAudioTimeUpdate() {
