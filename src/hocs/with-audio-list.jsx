@@ -7,7 +7,7 @@ function withAudioList(Component) {
       super(props);
 
       this.state = {
-        currentTrackId: undefined,
+        currentTrackId: -1,
       };
 
       this._handlePlay = this._handlePlay.bind(this);
@@ -23,13 +23,13 @@ function withAudioList(Component) {
 
     _handlePause() {
       this.setState({
-        currentTrackId: undefined,
+        currentTrackId: -1,
       });
     }
 
     _handleEnd() {
       this.setState({
-        currentTrackId: undefined,
+        currentTrackId: -1,
       });
     }
 

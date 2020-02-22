@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
+import ArtistQuestionScreen from '../artist-question-screen';
 import {ARTIST_QUESITON_TYPE, GENRE_QUESTION_TYPE} from '../consts';
 import GenreQuestionScreen from '../genre-question-screen';
 import {Questions} from '../types';

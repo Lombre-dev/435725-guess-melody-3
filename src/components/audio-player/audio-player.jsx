@@ -8,8 +8,6 @@ export default class AudioPlayer extends React.PureComponent {
     this._audioRef = React.createRef();
 
     this._handleAudioPlay = this._handleAudioPlay.bind(this);
-    this._handleAudioPause = this._handleAudioPause.bind(this);
-    this._handleAudioEnd = this._handleAudioEnd.bind(this);
     this._handleAudioTimeUpdate = this._handleAudioTimeUpdate.bind(this);
     this._handleClick = this._handleClick.bind(this);
   }
@@ -70,9 +68,13 @@ export default class AudioPlayer extends React.PureComponent {
 
   _handleClick() {
 
-    const {id, onPlayButtonClick} = this.props;
+    const {id, isPlaying, onPause, onPlay} = this.props;
 
-    onPlayButtonClick({id});
+    if (isPlaying) {
+      onPause();
+    } else {
+      onPlay({id});
+    }
   }
 
   render() {
