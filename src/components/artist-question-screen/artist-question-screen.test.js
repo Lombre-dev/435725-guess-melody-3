@@ -33,7 +33,8 @@ const QUESTION = {
   track: TRACK,
   answers: ARTISTS,
 };
-const HANDLE_CLICK = () => {};
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<ArtistQuestionScreen />`, () => {
 
@@ -42,7 +43,11 @@ describe(`<ArtistQuestionScreen />`, () => {
     const result = renderer
       .create(<ArtistQuestionScreen
         question={QUESTION}
-        onAnswer={HANDLE_CLICK}
+        currentTrackId={CURRENT_TRACK_ID}
+        onPlay={HANDLE_CALLBACK}
+        onPause={HANDLE_CALLBACK}
+        onEnd={HANDLE_CALLBACK}
+        onAnswer={HANDLE_CALLBACK}
       />, {
         createNodeMock: () => {
           return {};

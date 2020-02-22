@@ -12,9 +12,9 @@ const TRACK = {
   title: `Title 1`,
   src: ``
 };
+const CURRENT_TRACK_ID = 0;
 const CHECKED = false;
-const HANDLE_SELECT = () => {};
-const RENDER_AUDIO_PLAYER = () => {};
+const HANDLE_CALLBACK = () => {};
 
 describe(`<GenreQuestionAnswer />`, () => {
 
@@ -25,8 +25,11 @@ describe(`<GenreQuestionAnswer />`, () => {
         index={INDEX}
         track={TRACK}
         checked={CHECKED}
-        onSelect={HANDLE_SELECT}
-        renderAudioPlayer={RENDER_AUDIO_PLAYER}
+        currentTrackId={CURRENT_TRACK_ID}
+        onPlay={HANDLE_CALLBACK}
+        onPause={HANDLE_CALLBACK}
+        onEnd={HANDLE_CALLBACK}
+        onSelect={HANDLE_CALLBACK}
       />, {
         createNodeMock: () => {
           return {};

@@ -7,21 +7,16 @@ export default class AudioPlayer extends React.PureComponent {
 
     this._audioRef = React.createRef();
 
-    this._handleAudioPlay = this._handleAudioPlay.bind(this);
-    this._handleAudioTimeUpdate = this._handleAudioTimeUpdate.bind(this);
     this._handleClick = this._handleClick.bind(this);
   }
 
   componentDidMount() {
 
-    const {src, volume, onCanPlayThrough, onPause, onEnd} = this.props;
+    const {src, volume, onCanPlayThrough, onEnd} = this.props;
     const audio = this._audioRef.current;
 
     audio.oncanplaythrough = onCanPlayThrough;
-    audio.onplay = this._handleAudioPlay;
-    audio.onpause = onPause;
     audio.onend = onEnd;
-    audio.ontimeupdate = this._handleAudioTimeUpdate;
     audio.volume = volume;
     audio.src = src;
   }
@@ -31,10 +26,7 @@ export default class AudioPlayer extends React.PureComponent {
     const audio = this._audioRef.current;
 
     audio.oncanplaythrough = null;
-    audio.onplay = null;
-    audio.onpause = null;
     audio.onend = null;
-    audio.ontimeupdate = null;
     audio.src = ``;
   }
 
@@ -48,22 +40,6 @@ export default class AudioPlayer extends React.PureComponent {
     } else {
       audio.pause();
     }
-  }
-
-  _handleAudioPlay() {
-
-    const {id, onPlay} = this.props;
-
-    onPlay({id});
-  }
-
-  _handleAudioTimeUpdate() {
-
-    const audio = this._audioRef.current;
-
-    const {id, onTimeUpdate} = this.props;
-
-    onTimeUpdate({id, progress: audio.currentTime});
   }
 
   _handleClick() {
@@ -103,13 +79,10 @@ AudioPlayer.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
   onCanPlayThrough: PropTypes.func.isRequired,
   onPlay: PropTypes.func.isRequired,
-  onTimeUpdate: PropTypes.func,
   onPause: PropTypes.func.isRequired,
   onEnd: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
   volume: PropTypes.number,
-  // вернул, все же, коллбек по нажатию
-  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 AudioPlayer.defaultProps = {

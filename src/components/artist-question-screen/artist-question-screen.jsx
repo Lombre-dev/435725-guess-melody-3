@@ -57,6 +57,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
             <div className="track">
               <AudioPlayer
                 id={0}
+                isAutoplay={true}
                 isPlaying={currentTrackId === 0}
                 onPlay={onPlay}
                 onPause={onPause}

@@ -21,7 +21,6 @@ describe(`<AudioPlayer />`, () => {
         onPlay={HANDLE_EVENT}
         onPause={HANDLE_EVENT}
         onEnd={HANDLE_EVENT}
-        onPlayButtonClick={HANDLE_EVENT}
         src={SRC}
       />, {
         createNodeMock: () => {

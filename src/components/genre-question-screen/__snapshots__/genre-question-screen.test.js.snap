@@ -71,8 +71,8 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
         className="track"
       >
         <button
-          className="track__button track__button--play"
-          disabled={false}
+          className="track__button track__button--pause"
+          disabled={true}
           onClick={[Function]}
           type="button"
         />
@@ -106,7 +106,7 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       >
         <button
           className="track__button track__button--play"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           type="button"
         />
@@ -140,7 +140,7 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       >
         <button
           className="track__button track__button--play"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           type="button"
         />
@@ -174,7 +174,7 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
       >
         <button
           className="track__button track__button--play"
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           type="button"
         />

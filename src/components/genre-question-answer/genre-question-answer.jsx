@@ -26,6 +26,7 @@ export default class GenreQuestionAnswer extends React.PureComponent {
       <div className="track">
         <AudioPlayer
           id={index}
+          isAutoplay={index === 0}
           isPlaying={this.props.currentTrackId === index}
           onPlay={onPlay}
           onPause={onPause}

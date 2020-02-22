@@ -11,7 +11,6 @@ export default class GenreQuestionScreen extends React.PureComponent {
 
     this.state = {
       checks: this.props.question.answers.map(() => false),
-      trackId: undefined,
     };
 
     this._handleAnswerSelect = this._handleAnswerSelect.bind(this);
@@ -44,7 +43,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
   render() {
 
     const {checks} = this.state;
-    const {question, onPlay, onPause, onEnd} = this.props;
+    const {question, currentTrackId, onPlay, onPause, onEnd} = this.props;
     const {genre, answers} = question;
 
     return (
@@ -81,11 +80,11 @@ export default class GenreQuestionScreen extends React.PureComponent {
               answers.map((value, index) => {
                 return (
                   <GenreQuestionAnswer
-                    currentTrackId={this.state.trackId}
+                    key={value.title}
+                    currentTrackId={currentTrackId}
                     onPlay={onPlay}
                     onPause={onPause}
                     onEnd={onEnd}
-                    key={value.title}
                     index={index}
                     checked={checks[index]}
                     track={value}

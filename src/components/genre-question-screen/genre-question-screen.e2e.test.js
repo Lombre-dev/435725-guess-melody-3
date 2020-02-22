@@ -47,7 +47,8 @@ const TRACKS = [
     src: ``,
   },
 ];
-const RENDER_AUDIO_PLAYER = () => {};
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<GenreQuestionScreen />`, () => {
 
@@ -63,8 +64,11 @@ describe(`<GenreQuestionScreen />`, () => {
 
     const result = mount(<GenreQuestionScreen
       question={question}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
       onAnswer={handleAnswer}
-      renderAudioPlayer={RENDER_AUDIO_PLAYER}
     />);
 
     result
@@ -92,6 +96,10 @@ describe(`<GenreQuestionScreen />`, () => {
 
     const result = mount(<GenreQuestionScreen
       question={question}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
       onAnswer={handleAnswer}
     />);
 

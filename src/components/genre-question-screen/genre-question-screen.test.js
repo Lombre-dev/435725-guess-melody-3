@@ -41,23 +41,25 @@ const TRACKS = [
     src: ``,
   },
 ];
-const HANDLE_ANSWER = () => {};
-const RENDER_AUDIO_PLAYER = () => {};
+const QUESTION = {
+  genre: GENRE,
+  answers: TRACKS,
+};
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<GenreQuestionScreen />`, () => {
 
   it(`render should be match markup`, () => {
 
-    const question = {
-      genre: GENRE,
-      answers: TRACKS,
-    };
-
     const result = renderer
       .create(<GenreQuestionScreen
-        question={question}
-        onAnswer={HANDLE_ANSWER}
-        renderAudioPlayer={RENDER_AUDIO_PLAYER}
+        question={QUESTION}
+        currentTrackId={CURRENT_TRACK_ID}
+        onPlay={HANDLE_CALLBACK}
+        onPause={HANDLE_CALLBACK}
+        onEnd={HANDLE_CALLBACK}
+        onAnswer={HANDLE_CALLBACK}
       />, {
         createNodeMock: () => {
           return {};
