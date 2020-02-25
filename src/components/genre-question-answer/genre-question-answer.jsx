@@ -31,7 +31,6 @@ export default class GenreQuestionAnswer extends React.PureComponent {
           onPlay={onPlay}
           onPause={onPause}
           onEnd={onEnd}
-          onPlayButtonClick={() => {}}
           src={track.src}
         />
         <div className="game__answer">

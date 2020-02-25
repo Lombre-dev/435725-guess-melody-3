@@ -62,7 +62,6 @@ export default class ArtistQuestionScreen extends React.PureComponent {
                 onPlay={onPlay}
                 onPause={onPause}
                 onEnd={onEnd}
-                onPlayButtonClick={() => {}}
                 src={track.src}
               />
             </div>
