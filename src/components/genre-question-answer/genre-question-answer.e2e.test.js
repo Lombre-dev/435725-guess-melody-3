@@ -18,6 +18,8 @@ const TRACK = {
   src: ``
 };
 const CHECKED = false;
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<GenreQuestionAnswer />`, () => {
 
@@ -33,8 +35,12 @@ describe(`<GenreQuestionAnswer />`, () => {
     const result = shallow(<GenreQuestionAnswer
       index={INDEX}
       track={TRACK}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
       checked={CHECKED}
-      onSelectCallback={handleSelect}
+      onSelect={handleSelect}
     />);
 
     result

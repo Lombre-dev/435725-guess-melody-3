@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {HANDLE_QUESTION_ANSWER} from '../../mocks/questions';
-import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
+import ArtistQuestionScreen from '../artist-question-screen';
+import GenreQuestionScreen from '../genre-question-screen';
 import Main from '../main/main';
 import {Questions} from '../types';
 
@@ -24,13 +24,13 @@ export default class App extends React.PureComponent {
         <Route exact path='/dev-artist'>
           <ArtistQuestionScreen
             question={questions[0]}
-            onAnswerCallback={HANDLE_QUESTION_ANSWER}
+            onAnswer={HANDLE_QUESTION_ANSWER}
           />
         </Route>
         <Route exact path='/dev-genre'>
           <GenreQuestionScreen
             question={questions[1]}
-            onAnswerCallback={HANDLE_QUESTION_ANSWER}
+            onAnswer={HANDLE_QUESTION_ANSWER}
           />
         </Route>
       </BrowserRouter>

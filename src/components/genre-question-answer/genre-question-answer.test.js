@@ -12,8 +12,9 @@ const TRACK = {
   title: `Title 1`,
   src: ``
 };
+const CURRENT_TRACK_ID = 0;
 const CHECKED = false;
-const HANDLE_SELECT = () => {};
+const HANDLE_CALLBACK = () => {};
 
 describe(`<GenreQuestionAnswer />`, () => {
 
@@ -24,8 +25,16 @@ describe(`<GenreQuestionAnswer />`, () => {
         index={INDEX}
         track={TRACK}
         checked={CHECKED}
-        onSelectCallback={HANDLE_SELECT}
-      />)
+        currentTrackId={CURRENT_TRACK_ID}
+        onPlay={HANDLE_CALLBACK}
+        onPause={HANDLE_CALLBACK}
+        onEnd={HANDLE_CALLBACK}
+        onSelect={HANDLE_CALLBACK}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(result).toMatchSnapshot();

@@ -47,6 +47,8 @@ const TRACKS = [
     src: ``,
   },
 ];
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<GenreQuestionScreen />`, () => {
 
@@ -58,9 +60,15 @@ describe(`<GenreQuestionScreen />`, () => {
       answers: TRACKS,
     };
 
+    jest.spyOn(HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+
     const result = mount(<GenreQuestionScreen
       question={question}
-      onAnswerCallback={handleAnswer}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
+      onAnswer={handleAnswer}
     />);
 
     result
@@ -84,9 +92,15 @@ describe(`<GenreQuestionScreen />`, () => {
       answer: [false, true, false, true],
     };
 
+    jest.spyOn(HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+
     const result = mount(<GenreQuestionScreen
       question={question}
-      onAnswerCallback={handleAnswer}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
+      onAnswer={handleAnswer}
     />);
 
     const elements = result.find(GenreQuestionAnswer);

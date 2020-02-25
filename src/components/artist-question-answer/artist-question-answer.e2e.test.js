@@ -22,7 +22,7 @@ describe(`<ArtistQuestionAnswer />`, () => {
     const result = shallow(<ArtistQuestionAnswer
       index={INDEX}
       artist={ARTIST}
-      onSelectCallback={handleSelect}
+      onSelect={handleSelect}
     />);
 
     result

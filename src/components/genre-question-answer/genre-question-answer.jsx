@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import AudioPlayer from '../audio-player';
 import {Track} from '../types';
 
 export default class GenreQuestionAnswer extends React.PureComponent {
@@ -12,21 +13,26 @@ export default class GenreQuestionAnswer extends React.PureComponent {
 
   _handleChange(e) {
 
-    const {index, onSelectCallback} = this.props;
+    const {index, onSelect} = this.props;
 
-    onSelectCallback({index, checked: e.target.checked});
+    onSelect({index, checked: e.target.checked});
   }
 
   render() {
 
-    const {index, track, checked} = this.props;
+    const {index, track, checked, onPlay, onPause, onEnd} = this.props;
 
     return (
       <div className="track">
-        <button className="track__button track__button--play" type="button"></button>
-        <div className="track__status">
-          <audio src={track.src}></audio>
-        </div>
+        <AudioPlayer
+          id={index}
+          isAutoplay={index === 0}
+          isPlaying={this.props.currentTrackId === index}
+          onPlay={onPlay}
+          onPause={onPause}
+          onEnd={onEnd}
+          src={track.src}
+        />
         <div className="game__answer">
           <input
             className="game__input visually-hidden"
@@ -46,7 +52,11 @@ export default class GenreQuestionAnswer extends React.PureComponent {
 
 GenreQuestionAnswer.propTypes = {
   index: PropTypes.number.isRequired,
+  currentTrackId: PropTypes.number.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onPause: PropTypes.func.isRequired,
+  onEnd: PropTypes.func.isRequired,
   track: Track.isRequired,
   checked: PropTypes.bool,
-  onSelectCallback: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };

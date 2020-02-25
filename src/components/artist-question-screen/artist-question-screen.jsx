@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ArtistQuestionAnswer from '../artist-question-answer/artist-question-answer';
+import AudioPlayer from '../audio-player';
 import {Artist, Track} from '../types';
 
 export default class ArtistQuestionScreen extends React.PureComponent {
@@ -13,14 +14,14 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
   _handleAnswerSelect({index}) {
 
-    const {question, onAnswerCallback} = this.props;
+    const {question, onAnswer} = this.props;
 
-    onAnswerCallback({question, answer: index});
+    onAnswer({question, answer: index});
   }
 
   render() {
 
-    const {question} = this.props;
+    const {question, currentTrackId, onPlay, onPause, onEnd} = this.props;
     const {track, answers} = question;
 
     return (
@@ -54,10 +55,15 @@ export default class ArtistQuestionScreen extends React.PureComponent {
           <h2 className="game__title">Кто исполняет эту песню?</h2>
           <div className="game__track">
             <div className="track">
-              <button className="track__button track__button--play" type="button"></button>
-              <div className="track__status">
-                <audio src={track.src}></audio>
-              </div>
+              <AudioPlayer
+                id={0}
+                isAutoplay={true}
+                isPlaying={currentTrackId === 0}
+                onPlay={onPlay}
+                onPause={onPause}
+                onEnd={onEnd}
+                src={track.src}
+              />
             </div>
           </div>
 
@@ -69,7 +75,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
                     key={value.name}
                     index={index}
                     artist={value}
-                    onSelectCallback={this._handleAnswerSelect}
+                    onSelect={this._handleAnswerSelect}
                   />
                 );
               })
@@ -86,5 +92,9 @@ ArtistQuestionScreen.propTypes = {
     track: Track.isRequired,
     answers: PropTypes.arrayOf(Artist).isRequired,
   }).isRequired,
-  onAnswerCallback: PropTypes.func.isRequired,
+  currentTrackId: PropTypes.number.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onPause: PropTypes.func.isRequired,
+  onEnd: PropTypes.func.isRequired,
+  onAnswer: PropTypes.func.isRequired,
 };

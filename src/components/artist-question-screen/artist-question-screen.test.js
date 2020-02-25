@@ -29,22 +29,30 @@ const ARTISTS = [
     image: ``,
   },
 ];
-const handleClick = () => {};
+const QUESTION = {
+  track: TRACK,
+  answers: ARTISTS,
+};
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<ArtistQuestionScreen />`, () => {
 
   it(`render should be match markup`, () => {
 
-    const question = {
-      track: TRACK,
-      answers: ARTISTS,
-    };
-
     const result = renderer
       .create(<ArtistQuestionScreen
-        question={question}
-        onAnswerCallback={handleClick}
-      />)
+        question={QUESTION}
+        currentTrackId={CURRENT_TRACK_ID}
+        onPlay={HANDLE_CALLBACK}
+        onPause={HANDLE_CALLBACK}
+        onEnd={HANDLE_CALLBACK}
+        onAnswer={HANDLE_CALLBACK}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(result).toMatchSnapshot();

@@ -42,8 +42,8 @@ exports[`<App /> render should be match markup 1`] = `
     </li>
     <li>
       Можно допустить 
-      3
-       ошибки.
+      3 ошибки
+      .
     </li>
   </ul>
   <p

@@ -17,7 +17,7 @@ describe(`<ArtistQuestionAnswer />`, () => {
       .create(<ArtistQuestionAnswer
         index={INDEX}
         artist={ARTIST}
-        onSelectCallback={HANDLE_SELECT}
+        onSelect={HANDLE_SELECT}
       />)
       .toJSON();
 

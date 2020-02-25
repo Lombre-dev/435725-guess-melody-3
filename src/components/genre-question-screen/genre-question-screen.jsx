@@ -33,17 +33,17 @@ export default class GenreQuestionScreen extends React.PureComponent {
 
   _handleFormSubmit(e) {
 
-    const {question, onAnswerCallback} = this.props;
+    const {question, onAnswer} = this.props;
     const {checks} = this.state;
 
     e.preventDefault();
-    onAnswerCallback({question, answer: checks});
+    onAnswer({question, answer: checks});
   }
 
   render() {
 
     const {checks} = this.state;
-    const {question} = this.props;
+    const {question, currentTrackId, onPlay, onPause, onEnd} = this.props;
     const {genre, answers} = question;
 
     return (
@@ -81,10 +81,14 @@ export default class GenreQuestionScreen extends React.PureComponent {
                 return (
                   <GenreQuestionAnswer
                     key={value.title}
+                    currentTrackId={currentTrackId}
+                    onPlay={onPlay}
+                    onPause={onPause}
+                    onEnd={onEnd}
                     index={index}
                     checked={checks[index]}
                     track={value}
-                    onSelectCallback={this._handleAnswerSelect}
+                    onSelect={this._handleAnswerSelect}
                   />
                 );
               })
@@ -102,5 +106,9 @@ GenreQuestionScreen.propTypes = {
     genre: PropTypes.oneOf(GENRES).isRequired,
     answers: PropTypes.arrayOf(Track).isRequired,
   }).isRequired,
-  onAnswerCallback: PropTypes.func.isRequired,
+  currentTrackId: PropTypes.number.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onPause: PropTypes.func.isRequired,
+  onEnd: PropTypes.func.isRequired,
+  onAnswer: PropTypes.func.isRequired,
 };

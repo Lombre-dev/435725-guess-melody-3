@@ -5,15 +5,15 @@ exports[`<GenreQuestionAnswer /> render should be match markup 1`] = `
   className="track"
 >
   <button
-    className="track__button track__button--play"
+    className="track__button track__button--pause"
+    disabled={true}
+    onClick={[Function]}
     type="button"
   />
   <div
     className="track__status"
   >
-    <audio
-      src=""
-    />
+    <audio />
   </div>
   <div
     className="game__answer"

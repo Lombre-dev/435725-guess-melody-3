@@ -39,6 +39,8 @@ const QUESTION = {
   track: TRACK,
   answers: ARTISTS,
 };
+const CURRENT_TRACK_ID = 0;
+const HANDLE_CALLBACK = () => {};
 
 describe(`<ArtistQuestionScreen />`, () => {
 
@@ -48,7 +50,11 @@ describe(`<ArtistQuestionScreen />`, () => {
 
     const result = mount(<ArtistQuestionScreen
       question={QUESTION}
-      onAnswerCallback={handleAnswer}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
+      onAnswer={handleAnswer}
     />);
 
     result
@@ -70,7 +76,11 @@ describe(`<ArtistQuestionScreen />`, () => {
 
     const result = mount(<ArtistQuestionScreen
       question={QUESTION}
-      onAnswerCallback={handleAnswer}
+      currentTrackId={CURRENT_TRACK_ID}
+      onPlay={HANDLE_CALLBACK}
+      onPause={HANDLE_CALLBACK}
+      onEnd={HANDLE_CALLBACK}
+      onAnswer={handleAnswer}
     />);
 
     result

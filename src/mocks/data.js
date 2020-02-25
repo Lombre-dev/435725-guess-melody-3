@@ -1,4 +1,5 @@
 export const ERRORS_LIMIT = 3;
+export const TRACK_VOLUME = 0.25;
 
 export const ARTISTS = {
   sting: {
@@ -24,24 +25,24 @@ export const TRACKS = {
     artist: ARTISTS.sting,
     title: `Englishman in New York`,
     genre: `pop`,
-    src: ``
+    src: `./samples/sting_sample.ogg`,
   },
   daniCalifornia: {
     artist: ARTISTS.redHotChiliPappers,
     title: `Dani California`,
     genre: `rock`,
-    src: ``,
+    src: `./samples/rhcp_sample.ogg`,
   },
   sailAway: {
     artist: ARTISTS.deepPurple,
     title: `Sail Away`,
     genre: `rock`,
-    src: ``,
+    src: `./samples/deep_purple_sample.ogg`,
   },
   oohLaLaInLA: {
     artist: ARTISTS.slade,
     title: `Ooh La La In LA`,
     genre: `rock`,
-    src: ``,
+    src: `./samples/slade_sample.ogg`,
   },
 };
