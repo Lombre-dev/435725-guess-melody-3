@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 import App from './components/app/app';
-import {ERRORS_LIMIT} from './mocks/data';
-import {QUESTIONS} from './mocks/questions';
+import {reducer} from './reducer';
 
-ReactDOM.render(<App
-  errorsLimit={ERRORS_LIMIT}
-  questions={QUESTIONS}
-/>, document.getElementById(`root`));
+/* eslint-disable indent */
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById(`root`)
+);

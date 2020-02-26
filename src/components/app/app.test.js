@@ -1,5 +1,7 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 import App from './app';
 
 const ERRORS_LIMIT = 3;
@@ -78,15 +80,23 @@ const QUESTIONS = [
   },
 ];
 
+const mockStore = configureStore([]);
+
 describe(`<App />`, () => {
 
   it(`render should be match markup`, () => {
 
+    const store = mockStore({
+      errorsCount: 0,
+      errorsLimit: ERRORS_LIMIT,
+      step: -1,
+      questions: QUESTIONS,
+    });
+
     const result = renderer
-      .create(<App
-        errorsLimit={ERRORS_LIMIT}
-        questions={QUESTIONS}
-      />)
+      .create(<Provider store={store}>
+        <App />
+      </Provider>)
       .toJSON();
 
     expect(result).toMatchSnapshot();

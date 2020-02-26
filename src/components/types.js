@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {GENRES, QUESTION_TYPES} from './consts';
+import {GENRES, QUESTION_TYPES} from '../consts';
 
 export const Artist = PropTypes.shape({
   name: PropTypes.string.isRequired,

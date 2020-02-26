@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {GENRES} from '../consts';
+import {GENRES} from '../../consts';
+import ErrorIndicator from '../error-indicator/error-indicator';
 import GenreQuestionAnswer from '../genre-question-answer/genre-question-answer';
 import {Track} from '../types';
 
@@ -66,11 +67,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
             />
           </svg>
 
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
+          <ErrorIndicator />
         </header>
 
         <section className="game__screen">

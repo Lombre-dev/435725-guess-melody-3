@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {connect} from 'react-redux';
 import {getPluralForm} from '../../utils/get-plural-form';
 
 const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
@@ -25,8 +26,15 @@ const WelcomeScreen = ({errorsLimit, onWelcomeButtonClick}) => {
 };
 
 WelcomeScreen.propTypes = {
-  errorsLimit: PropTypes.number.isRequired,
+  errorsLimit: PropTypes.number.isRequired, // from store
   onWelcomeButtonClick: PropTypes.func.isRequired,
 };
 
-export default WelcomeScreen;
+function mapStateToProps(state) {
+  return {
+    errorsLimit: state.errorsLimit,
+  };
+}
+
+export {WelcomeScreen};
+export default connect(mapStateToProps)(WelcomeScreen);

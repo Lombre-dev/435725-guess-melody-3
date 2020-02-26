@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorsIndicator /> render should be match markup 1`] = `
+<div
+  className="game__mistakes"
+>
+  <div
+    className="wrong"
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  />
+  <div
+    className="wrong"
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  />
+  <div
+    className="wrong"
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  />
+</div>
+`;

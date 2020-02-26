@@ -1,18 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {WelcomeScreen} from './welcome-screen';
+import {ErrorIndicator} from './error-indicator';
 
+const ERRORS_COUNT = 0;
 const ERRORS_LIMIT = 3;
-const HANDLE_CLICK = () => {};
 
-describe(`<WelcomeScreen />`, () => {
+describe(`<ErrorsIndicator />`, () => {
 
   it(`render should be match markup`, () => {
 
     const result = renderer
-      .create(<WelcomeScreen
-        errorsLimit={ERRORS_LIMIT}
-        onWelcomeButtonClick={HANDLE_CLICK}
+      .create(<ErrorIndicator
+        count={ERRORS_COUNT}
+        limit={ERRORS_LIMIT}
       />)
       .toJSON();
 

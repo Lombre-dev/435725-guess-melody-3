@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ArtistQuestionAnswer from '../artist-question-answer/artist-question-answer';
 import AudioPlayer from '../audio-player';
+import ErrorIndicator from '../error-indicator/error-indicator';
 import {Artist, Track} from '../types';
 
 export default class ArtistQuestionScreen extends React.PureComponent {
@@ -44,11 +45,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
             />
           </svg>
 
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
+          <ErrorIndicator />
         </header>
 
         <section className="game__screen">

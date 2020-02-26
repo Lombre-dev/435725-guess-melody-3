@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import {connect} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {HANDLE_QUESTION_ANSWER} from '../../mocks/questions';
 import ArtistQuestionScreen from '../artist-question-screen';
@@ -7,19 +7,16 @@ import GenreQuestionScreen from '../genre-question-screen';
 import Main from '../main/main';
 import {Questions} from '../types';
 
-export default class App extends React.PureComponent {
+class App extends React.PureComponent {
 
   render() {
 
-    const {errorsLimit, questions} = this.props;
+    const {questions} = this.props;
 
     return (
       <BrowserRouter>
         <Route exact path='/'>
-          <Main
-            errorsLimit={errorsLimit}
-            questions={questions}
-          />
+          <Main />
         </Route>
         <Route exact path='/dev-artist'>
           <ArtistQuestionScreen
@@ -39,6 +36,14 @@ export default class App extends React.PureComponent {
 }
 
 App.propTypes = {
-  errorsLimit: PropTypes.number.isRequired,
   questions: Questions.isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    questions: state.questions,
+  };
+}
+
+export {App};
+export default connect(mapStateToProps)(App);

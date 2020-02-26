@@ -46,12 +46,27 @@ exports[`<GenreQuestionScreen /> render should be match markup 1`] = `
     >
       <div
         className="wrong"
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
       />
       <div
         className="wrong"
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
       />
       <div
         className="wrong"
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
       />
     </div>
   </header>

@@ -1,13 +1,13 @@
-import {ARTIST_QUESITON_TYPE, GENRE_QUESTION_TYPE} from '../components/consts';
+import {ARTIST_QUESITON_TYPE, GENRE_QUESTION_TYPE} from '../consts';
 import {ARTISTS, TRACKS} from './data';
 
-const artists = Object.values(ARTISTS);
-const tracks = Object.values(TRACKS);
+const artists = Object.values(ARTISTS).sort();
+const tracks = Object.values(TRACKS).sort();
 
 export const QUESTIONS = [
   {
     type: ARTIST_QUESITON_TYPE,
-    track: tracks[Math.floor(Math.random() * tracks.length)],
+    track: tracks[1],
     answers: artists,
   },
   {
@@ -17,7 +17,7 @@ export const QUESTIONS = [
   },
   {
     type: ARTIST_QUESITON_TYPE,
-    track: tracks[Math.floor(Math.random() * tracks.length)],
+    track: tracks[2],
     answers: artists,
   },
 ];
